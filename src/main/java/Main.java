@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Main implements ConsoleFormatting {
 
-final static int numberOfInitialEmployees = 5;
+    final static int numberOfInitialEmployees = 5;
 
     public static void main(String[] args) {
         Company company = new Company(new ArrayList<>());

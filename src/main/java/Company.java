@@ -4,11 +4,15 @@ import java.util.Scanner;
 
 public class Company implements ConsoleFormatting {
 
-    Scanner scanner = new Scanner(System.in);
     private final ArrayList<Employee> employees;
+    Scanner scanner = new Scanner(System.in);
 
     public Company(ArrayList<Employee> employees) {
         this.employees = employees;
+    }
+
+    public static void incorrectInputNotification() {
+        System.out.println(ANSI_RED + "Sorry, this data seems to be incorrect. Please try again." + ANSI_RESET);
     }
 
     public BigDecimal getAllSalaries() {
@@ -41,8 +45,7 @@ public class Company implements ConsoleFormatting {
     }
 
     private void validateInputAsInt() {
-
-        while (!scanner.hasNextInt())  {
+        while (!scanner.hasNextInt()) {
             incorrectInputNotification();
             scanner.next();
         }
@@ -72,10 +75,6 @@ public class Company implements ConsoleFormatting {
             e.getAllData();
             listOrder++;
         }
-    }
-
-    public static void incorrectInputNotification() {
-        System.out.println(ANSI_RED + "Sorry, this data seems to be incorrect. Please try again." + ANSI_RESET);
     }
 }
 

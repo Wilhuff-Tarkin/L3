@@ -27,7 +27,7 @@ public class Employee implements ConsoleFormatting {
     }
 
     public void setSalary(BigDecimal salary) {
-        if (salary.compareTo(BigDecimal.ZERO)>0) {
+        if (salary.compareTo(BigDecimal.ZERO) > 0) {
             this.salary = salary;
         } else {
             System.out.println(ANSI_RED + "Setting up as zero" + ANSI_RESET);
