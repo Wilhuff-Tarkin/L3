@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Company implements ConsoleFormatting {
 
     Scanner scanner = new Scanner(System.in);
-    ArrayList<Employee> employees;
+    private final ArrayList<Employee> employees;
 
     public Company(ArrayList<Employee> employees) {
         this.employees = employees;
