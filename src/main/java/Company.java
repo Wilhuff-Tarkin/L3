@@ -1,18 +1,12 @@
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Company implements ConsoleFormatting {
+public class Company {
 
-    private final ArrayList<Employee> employees;
-    Scanner scanner = new Scanner(System.in);
+    private ArrayList<Employee> employees;
 
     public Company(ArrayList<Employee> employees) {
         this.employees = employees;
-    }
-
-    public static void incorrectInputNotification() {
-        System.out.println(ANSI_RED + "Sorry, this data seems to be incorrect. Please try again." + ANSI_RESET);
     }
 
     public BigDecimal getAllSalaries() {
@@ -23,55 +17,24 @@ public class Company implements ConsoleFormatting {
         return salaries;
     }
 
-    public void addEmployee() {
-        int nextEmployeeNr = employees.size() + 1;
-        Employee employee = new Employee();
-
-        askUserFor("first name", nextEmployeeNr);
-        validateInputAsString();
-        employee.setFirstName(scanner.next());
-
-        askUserFor("surname", nextEmployeeNr);
-        validateInputAsString();
-        employee.setSurname(scanner.next());
-
-        askUserFor("salary", nextEmployeeNr);
-        validateInputAsInt();
-        employee.setSalary(BigDecimal.valueOf(scanner.nextInt()));
-
+    public void addEmployee(Employee employee) {
         employees.add(employee);
-        System.out.println("Employee nr " + ANSI_YELLOW + nextEmployeeNr + ANSI_RESET + " added.");
-        System.out.println();
     }
 
-    private void validateInputAsInt() {
-        while (!scanner.hasNextInt()) {
-            incorrectInputNotification();
-            scanner.next();
-        }
-    }
-
-    private void validateInputAsString() {
-        while (!scanner.hasNext("[a-zA-Z]+")) {
-            incorrectInputNotification();
-            scanner.next();
-        }
-    }
-
-    private void askUserFor(String askingFor, int employeeNumber) {
-        System.out.println("Please insert " + PURPLE_BOLD + askingFor + ANSI_RESET + " for employee nr " + ANSI_YELLOW + employeeNumber + ANSI_RESET);
+    public int getNumberOfEmployees() {
+        return employees.size();
     }
 
     public void printSumOfSalaries() {
-        System.out.println(YELLOW_UNDERLINED + "Printing sum of salaries..." + ANSI_RESET);
-        System.out.println("Sum of salaries for your company of " + ANSI_GREEN + employees.size() + ANSI_RESET + " employee(s): " + GREEN_UNDERLINED + getAllSalaries() + ANSI_RESET);
+        ConsoleFormatting.printInYellow("Printing sum of salaries...");
+        System.out.println("Sum of salaries for your company of " + employees.size() + " employee(s): " + getAllSalaries());
     }
 
     public void printDataOfAllEmployees() {
-        System.out.println(YELLOW_UNDERLINED + "Printing data for your employees:" + ANSI_RESET);
+        ConsoleFormatting.printInYellow("Printing data for your employees:");
         int listOrder = 1;
         for (Employee e : employees) {
-            System.out.print(ANSI_YELLOW + listOrder + ANSI_RESET + " ");
+            System.out.print(listOrder + " ");
             e.getAllData();
             listOrder++;
         }

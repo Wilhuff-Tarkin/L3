@@ -8,4 +8,11 @@ public interface ConsoleFormatting {
     String YELLOW_UNDERLINED = "\033[4;33m";
     String PURPLE_BOLD = "\033[1;35m";
 
+    static void printInYellow(String s) {
+        System.out.println(YELLOW_UNDERLINED + s + ANSI_RESET);
+    }
+
+    static void printInRed(String s) {
+        System.out.println(ANSI_RED + s + ANSI_RESET);
+    }
 }

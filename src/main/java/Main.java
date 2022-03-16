@@ -1,15 +1,17 @@
 import java.util.ArrayList;
 
-public class Main implements ConsoleFormatting {
+public class Main {
 
-    final static int numberOfInitialEmployees = 5;
+    final static int numberOfInitialEmployees = 1;
 
     public static void main(String[] args) {
+
         Company company = new Company(new ArrayList<>());
-        System.out.println(ANSI_YELLOW + "Please insert data for " + numberOfInitialEmployees + " initial employees." + ANSI_RESET);
+
+        UserInputHandler.askForInitialData(numberOfInitialEmployees);
 
         for (int i = 1; i <= numberOfInitialEmployees; i++) {
-            company.addEmployee();
+            company.addEmployee(UserInputHandler.getEmployee(company));
         }
         Operations.mainMenu(company);
     }

@@ -16,14 +16,14 @@ public abstract class Operations implements ConsoleFormatting {
                 mainMenu(company);
                 break;
             case 3:
-                company.addEmployee();
+                company.addEmployee(UserInputHandler.getEmployee(company));
                 mainMenu(company);
                 break;
             case 4:
                 System.out.println(ANSI_YELLOW + "Bye, bye." + ANSI_RESET);
                 return;
             default: {
-                Company.incorrectInputNotification();
+                System.out.println(ANSI_RED + "Sorry, this data seems to be incorrect. Please try again." + ANSI_RESET);
             }
         }
     }
