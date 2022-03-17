@@ -2,9 +2,9 @@ import java.math.BigDecimal;
 
 public class Employee {
 
-    private String firstName;
-    private String surname;
-    private BigDecimal salary;
+    private final String firstName;
+    private final String surname;
+    private final BigDecimal salary;
 
     public Employee(String firstName, String surname, BigDecimal salary) {
         this.firstName = firstName;
